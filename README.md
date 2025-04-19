@@ -1,6 +1,6 @@
 # Cadastro de Clientes
 
-Projeto full-stack para cadastro de clientes, com uma API em Node.js (TypeScript, Express e Prisma) e uma interface construída com React + Vite.
+Projeto full-stack para cadastro de clientes, com uma API em Node.js (TypeScript, Fastify e Prisma) e uma interface construída com React.js + Vite.
 
 ## 📁 Estrutura do Projeto
 
@@ -14,24 +14,22 @@ Projeto full-stack para cadastro de clientes, com uma API em Node.js (TypeScript
 - Integração com banco de dados via Prisma ORM
 - Interface moderna com React
 
----
-
 ## 🧪 Tecnologias Utilizadas
 
 ### Backend
+
 - Node.js
-- Express
+- Fastify
 - TypeScript
 - Prisma ORM
 - MongoDB (adaptável a outros bancos com Prisma)
 
 ### Frontend
+
 - React
 - TypeScript
 - Vite
-- TailwindCSS (se usado)
-
----
+- Axios
 
 ## 🛠️ Como Executar o Projeto
 
@@ -40,9 +38,6 @@ Projeto full-stack para cadastro de clientes, com uma API em Node.js (TypeScript
 - Node.js (v18+ recomendado)
 - Gerenciador de pacotes: npm ou yarn
 - MongoDB (instância local ou na nuvem)
-- (Opcional) Docker
-
----
 
 ### 🔙 Rodando o Backend
 
@@ -59,6 +54,7 @@ Rode as migrações e inicie a API:
 npx prisma generate
 npm run dev
 ```
+### O servidor estará disponível em http://localhost:3333.
 ---
 
 ### 🎨 Rodando o Frontend
@@ -72,10 +68,11 @@ npm run dev
 
 ### 📬 Endpoints da API
 - GET /customers: Lista todos os clientes
-- POST /customers: Cria um novo cliente
-- DELETE /customers/:id: Deleta um cliente pelo ID
+- POST /customer: Cria um novo cliente
+- DELETE /customer/:id: Deleta um cliente pelo ID
 ---
 
 ### 📝 Observações
-- O backend já está preparado para uso com Prisma e MongoDB, podendo ser adaptado facilmente para outros bancos de dados suportados pelo Prisma.
-- O frontend utiliza Vite para desenvolvimento rápido com React.
+- O backend utiliza Fastify como servidor web e Prisma para acesso ao banco de dados.
+- O frontend usa Axios para consumir a API.
+- Projeto é ideal para aprendizado.
