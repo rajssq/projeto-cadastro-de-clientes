@@ -2,9 +2,7 @@
 
 Projeto full-stack para cadastro de clientes, com uma API em Node.js (TypeScript, Fastify e Prisma) e uma interface construída com React.js + Vite.
 
-<video width="640" height="360" autoplay muted loop>
-  <source src="/apresentacao.mp4" type="video/mp4">
-</video>
+![Demonstração do Projeto](/frontend/public/apresentacao.gif)
 
 ## 📁 Estrutura do Projeto
 
