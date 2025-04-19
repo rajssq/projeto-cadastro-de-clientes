@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef, FormEvent } from "react"
 import { FiTrash } from "react-icons/fi"
+import { BiSolidCircle } from "react-icons/bi";
 import { api } from './services/api'
 
 interface CustomerProps {
@@ -57,13 +58,13 @@ export default function App() {
       console.error("Erro ao deletar cliente:", err);
     }
   }
-  
+
 
   return (
     <div className="w-full min-h-screen flex justify-center px-4 bg-gradient-to-b from-gray-900 to-gray-800">
       <main className="my-10 w-full md:max-w-2xl">
-        <h1 className="text-4xl font-medium text-white">ClIENTES</h1>
-
+        <h1 className="text-4xl flex justify-center font-medium text-white">Cadastro de Clientes</h1>
+        <p className="text-gray-400 text-center">Cadastre seus clientes e gerencie-os facilmente.</p>
         <form className="flex flex-col my-6" onSubmit={handleSubmit}>
           <label className="font-medium text-white">Nome:</label>
           <input
@@ -84,29 +85,37 @@ export default function App() {
           <input
             type="submit"
             className="p-2 rounded-md bg-blue-500 text-white font-medium cursor-pointer hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            value="Cadastrar Cliente"
+            value="Cadastrar"
           />
 
         </form>
 
         <section className="flex flex-col gap-4">
+        {customers.length === 0 ? (
+          <p className="text-gray-400 text-center">Nenhum cliente cadastrado.</p>
+        ) : (
+          <>
+            <h2 className="text-2xl font-medium text-white">Clientes Cadastrados:</h2>
+            <p className="text-gray-400">Clique no ícone de lixeira para deletar o cliente.</p>
+          </>
+        )}
 
-        {customers.map( (customer)=> (
-          <article key={customer.id}
-            className="w-full rounded-md p-2 relative  bg-gray-700 text-white placeholder:text-gray-400 hover:bg-gray-600 transition-colors duration-200">
+          {customers.map( (customer)=> (
+            <article key={customer.id}
+              className="w-full rounded-md p-2 relative  bg-gray-700 text-white placeholder:text-gray-400 hover:bg-gray-600 transition-colors duration-200">
 
-            <p><span className="font-medium">Nome:</span> {customer.name}</p>
-            <p><span className="font-medium">Email:</span> {customer.email}</p>
-            <p><span className="font-medium">Status:</span> {customer.status ? "ATIVO" : "INATIVO"}</p>
+              <p><span className="font-medium">Nome:</span> {customer.name}</p>
+              <p><span className="font-medium">Email:</span> {customer.email}</p>
+              <p className="flex items-center gap-1"><span className="font-medium">Status:</span> {customer.status ? <BiSolidCircle  size={15} color='#00d33f' /> : <BiSolidCircle  size={15} color='#e70000' />}</p>
 
-            <button
-              onClick={() => handleDelete(customer.id)}
-              className="bg-red-500 w-7 h-7 flex items-center justify-center cursor-pointer rounded-lg absolute right-0 -top-2">
-              
-              <FiTrash size={18} color='#FFFFFF' />
-            </button>
-          </article>
-        ))}
+              <button
+                onClick={() => handleDelete(customer.id)}
+                className="bg-red-500 w-7 h-7 flex items-center justify-center cursor-pointer rounded-lg absolute right-0 -top-2">
+                
+                <FiTrash size={18} color='#FFFFFF' />
+              </button>
+            </article>
+          ))}
 
         </section>
 
